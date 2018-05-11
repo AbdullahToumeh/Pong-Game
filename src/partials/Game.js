@@ -22,13 +22,15 @@ export default class Game {
 
 
 		this.board = new Board(this.width, this.height);
-		this.ball = new Ball(8, this.width,this.height);
+		this.ball1 = new Ball(8, this.width,this.height);
+		this.ball2 = new Ball(8, this.width,this.height);
+
 
 		this.paddleWidth = 8;
 		this.paddleHeight = 56;
 		this.boardGap = 10;
 		
-	this.player1 = new Paddle(
+		this.player1 = new Paddle(
 		this.height,
 		this.paddleWidth,
 		this.paddleHeight,
@@ -39,17 +41,17 @@ export default class Game {
 		);
 		
 		this.player2 = new Paddle(
-			this.height,
-			this.paddleWidth,
-			this.paddleHeight,
-			(this.width - this.boardGap - this.paddleWidth),
-			((this.height - this.paddleHeight) / 2),
-			KEYS.up,
-			KEYS.down
-			);
+		this.height,
+		this.paddleWidth,
+		this.paddleHeight,
+		(this.width - this.boardGap - this.paddleWidth),
+		((this.height - this.paddleHeight) / 2),
+		KEYS.up,
+		KEYS.down
+		);
 
-			this.score1 = new Score(this.width / 2 - 50, 30, 30);
-			this.score2 = new Score(this.width / 2 + 25, 30, 30);
+		this.score1 = new Score(this.width / 2 - 50, 30, 30);
+		this.score2 = new Score(this.width / 2 + 25, 30, 30);
 
 		// Other code goes here...
 	}// constructor
@@ -75,7 +77,10 @@ export default class Game {
 		this.player1.render(svg);
 		this.player2.render(svg);
 
-		this.ball.render(svg, this.player1, this.player2);
+		this.ball1.render(svg, this.player1, this.player2);
+		this.ball2.render(svg, this.player1, this.player2);
+
+
 
 		// render and update the score component based on player score
 		this.score1.render(svg, this.player1.score);
