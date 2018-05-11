@@ -1,8 +1,9 @@
+import Score from './Score';
 import Ball from './Ball';
 import Paddle from './Paddle';
 import Board from './Board';
 import { SVG_NS, KEYS } from '../settings';
-
+ 
 export default class Game {
 
 	constructor(element, width, height) {
@@ -11,6 +12,14 @@ export default class Game {
 		this.height = height;
 
 		this.gameElement = document.getElementById(this.element);
+
+		//pause
+		document.addEventListener('keydown', event => {
+			if ( event.key === KEYS.spaceBar) {
+				this.pause = !this.pause;
+			}
+		});
+
 
 		this.board = new Board(this.width, this.height);
 		this.ball = new Ball(8, this.width,this.height);
@@ -39,16 +48,17 @@ export default class Game {
 			KEYS.down
 			);
 
-			console.log(this.player1);
-			console.log(this.player2);
-	
+			this.score1 = new Score(this.width / 2 - 50, 30, 30);
+			this.score2 = new Score(this.width / 2 + 25, 30, 30);
 
-	  
-	  
-	
 		// Other code goes here...
-	}
+	}// constructor
 	render() {
+		//return pause
+		if (this.pause) {
+			return;
+		}
+
 		// More code goes here...
 
 		//be sure to empty out the last frame before re-rendering
@@ -66,6 +76,12 @@ export default class Game {
 		this.player2.render(svg);
 
 		this.ball.render(svg, this.player1, this.player2);
+
+		// render and update the score component based on player score
+		this.score1.render(svg, this.player1.score);
+		this.score2.render(svg, this.player2.score);
+
+		
 
 	}
 
