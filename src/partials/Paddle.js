@@ -66,13 +66,11 @@ export default class Paddle {
         let topY = y;
         let bottomY = y + height;
         return [leftX, rightX, topY, bottomY];
-    }
-
-
-    
+    }    
     //...
     render (svg) {
-        // Player movement
+
+        // Player1 movement
         if (this.keyState['w'] && this.player === 'player1') {
             this.up();
         }
@@ -85,7 +83,7 @@ export default class Paddle {
         if (this.keyState['d'] && this.player === 'player1') {
             this.rightplayer1();
         }
-//////////////////////
+        // Player2 movement
         if (this.keyState['ArrowUp'] && this.player === 'player2') {
             this.up();
         }

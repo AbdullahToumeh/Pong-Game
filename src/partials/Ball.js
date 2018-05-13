@@ -7,7 +7,6 @@ export default class Ball {
       this.boardHeight = boardHeight;
       this.direction = 1;
       this.ping = new Audio('public/sounds/pong-01.wav');
-
      
       this.reset();
     }
@@ -17,57 +16,43 @@ export default class Ball {
         // detect player2 paddle collision
         let paddle = player2.coordinates(player2.x, player2.y, player2.width, player2.height);
         let [leftX, rightX, topY, bottomY] = paddle;
-
         //right edge of the ball is >= left edge of the paddle
         if(
-          (this.x + this.radius >= leftX) &&
+           (this.x + this.radius >= leftX) &&
            (this.x + this.radius <= rightX) &&
            (this.y >= topY && this.y <= bottomY)
-        ) 
-        {
+
+          ) {
             this.vx *= -1;
             this.ping.play();
-        }
+            }
      
-      } else {
+      }else {
         let paddle = player1.coordinates(player1.x, player1.y, player1.width, player1.height);
         let [leftX, rightX, topY, bottomY] = paddle;
-
-
        //left edge of the ball is <= right edge of the paddle
-
        if(
         (this.x - this.radius <= rightX) &&
          (this.x - this.radius >= leftX) &&
          (this.y >= topY && this.y <= bottomY)
-      ) 
-      {
+        ) {
           this.vx *= -1;
           this.ping.play();
-
-
-      }
-
-      }
-    
-    }
-
-
+          }
+      }    
+    } 
 
     reset() {
       this.x = this.boardWidth / 2;
       this.y = this.boardHeight / 2;
-
       // experiment with changing these values
       this.vy = 0;
       while(this.vy === 0) {
         this.vy = Math.floor(Math.random() * 10 - 5);
       }
       this.vx = this.direction  * (6 - Math.abs(this.vy));
-    } // reset()
-
-
-
+    } 
+    // End reset()
 
     wallCollision(){
       const hitLeft = this.x - this.radius <= 0;

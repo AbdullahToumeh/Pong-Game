@@ -1,3 +1,4 @@
+import Winner from './Winner';
 import Score from './Score';
 import Ball from './Ball';
 import Paddle from './Paddle';
@@ -55,8 +56,10 @@ export default class Game {
 		'player2'
 		);
 
-		this.score1 = new Score(this.width / 2 - 50, 30, 30);
+		this.score1 = new Score(this.width / 2 - 50 , 30, 30);
 		this.score2 = new Score(this.width / 2 + 25, 30, 30);
+
+		this.winner = new Winner(this.width / 2 - 125 , 150, 40);
 
 	}// constructor
 
@@ -83,8 +86,10 @@ export default class Game {
 		this.score1.render(svg, this.player1.score);
 		this.score2.render(svg, this.player2.score);
 
-		
+		if(this.player1.score === 3 || this.player2.score === 3) {
+			this.winner.render(svg);
+			this.ball.reset();
 
+		}
 	}
-
 }
