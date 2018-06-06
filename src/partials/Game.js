@@ -86,7 +86,7 @@ export default class Game {
 		this.score1.render(svg, this.player1.score);
 		this.score2.render(svg, this.player2.score);
 
-		if(this.player1.score === 3 || this.player2.score === 3) {
+		if(this.player1.score === 10 || this.player2.score === 10) {
 			this.winner.render(svg);
 			this.ball.reset();
 
