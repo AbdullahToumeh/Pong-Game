@@ -4,16 +4,27 @@ basic game using SVGs, the game include some sounds when the ball bounce the pad
 
 ![pong](https://user-images.githubusercontent.com/37827068/41124157-ee09c5de-6a55-11e8-84a0-d8e69847b13d.gif)
 
-#keys
+## keys
 
 **player 1:**
+
 * a:left
 * d:right
 * s:down
 * w:up
 
 **player 1:**
+
+* ◀️:left
+* ▶️:right
+* 🔽:down
 * 🔼:up
-* 
-* 
-* 
+
+space: pause
+
+## key Features
+
+* space to pause the game.
+* Game over screen with one of the player get 10 points.
+* the paddles can move right and left.
+
